@@ -1,0 +1,36 @@
+{
+  "name": "typeorm-typegraphql",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --watch './**/*.ts' --exec 'ts-node' src/index.ts "
+  },
+  "dependencies": {
+    "apollo-server-core": "^3.11.1",
+    "apollo-server-express": "^3.11.1",
+    "bcrypt": "^5.1.0",
+    "class-validator": "^0.14.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "graphql": "^15.7.2",
+    "jsonwebtoken": "^8.5.1",
+    "nodemon": "^2.0.20",
+    "pg": "^8.8.0",
+    "reflect-metadata": "^0.1.13",
+    "ts-mixer": "^6.0.2",
+    "type-graphql": "^1.1.1",
+    "typeorm": "^0.3.11",
+    "typescript": "^4.9.4"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
+    "@types/express": "^4.17.15",
+    "@types/graphql": "^14.5.0",
+    "@types/jsonwebtoken": "^8.5.9",
+    "ts-node": "^10.9.1"
+  }
+}
