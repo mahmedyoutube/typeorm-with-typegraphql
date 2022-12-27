@@ -3,12 +3,13 @@ import { GraphQLSchema } from "graphql";
 import { UserResolver } from "./resolvers/UserResolver";
 import { ApolloServer } from "apollo-server-express";
 import { Express } from "express";
+import { ProductResolver } from "./resolvers/ProductResolver";
 
 class GraphQl {
   private _schema: GraphQLSchema;
 
   private resolvers(): NonEmptyArray<Function> | NonEmptyArray<string> {
-    return [UserResolver];
+    return [UserResolver, ProductResolver];
   }
 
   async buildGraphQLSchema() {
