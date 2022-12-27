@@ -1,25 +1,8 @@
-import {
-  Column,
-  CreateDateColumn,
-  Entity,
-  JoinTable,
-  ManyToMany,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn,
-} from "typeorm";
+import { JoinTable, ManyToMany } from "typeorm";
 import { Product } from "./Product";
+import { Base } from "./Base";
 
-@Entity()
-export class Cart {
-  @PrimaryGeneratedColumn()
-  id: number;
-
-  @CreateDateColumn()
-  createdAt: Date;
-
-  @UpdateDateColumn()
-  updatedAt: Date;
-
+export class Cart extends Base {
   @ManyToMany(() => Product)
   @JoinTable()
   product: Product[];

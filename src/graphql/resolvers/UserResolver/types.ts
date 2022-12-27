@@ -1,7 +1,7 @@
 import { ArgsType, Field } from "type-graphql";
 
 @ArgsType()
-export class SignUpUserArgs {
+export class CreateNewUserArgs {
   @Field({ nullable: false })
   firstName: string;
   @Field({ nullable: false })

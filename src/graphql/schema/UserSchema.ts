@@ -1,4 +1,5 @@
 import { Field, ObjectType } from "type-graphql";
+import { ProductSchema as Product } from "./ProductSchema";
 
 @ObjectType()
 export class UserSchema {
@@ -25,4 +26,7 @@ export class UserSchema {
 
   @Field()
   phoneNumber?: string;
+
+  @Field((type) => [Product], { nullable: true })
+  products?: Product[];
 }
