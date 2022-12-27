@@ -10,6 +10,7 @@ import {
 import { Profile } from "./Profile";
 import { Product } from "./Product";
 
+
 @Entity()
 export class User {
   @PrimaryGeneratedColumn()
