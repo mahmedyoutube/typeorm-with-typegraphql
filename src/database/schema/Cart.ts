@@ -1,4 +1,5 @@
 import {
+  BaseEntity,
   Column,
   CreateDateColumn,
   Entity,
@@ -10,7 +11,7 @@ import {
 import { Product } from "./Product";
 
 @Entity()
-export class Cart {
+export class Cart extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
