@@ -1,9 +1,9 @@
 import { DataSource, DeepPartial, EntityTarget, ObjectLiteral } from "typeorm";
 import { config } from "../config";
-import { User } from "./schema/User";
-import { Product } from "./schema/Product";
-import { Profile } from "./schema/Profile";
-import { Cart } from "./schema/Cart";
+import { User } from "../graphql/schema/User";
+import { Product } from "../graphql/schema/Product";
+import { Profile } from "../graphql/schema/Profile";
+import { Cart } from "../graphql/schema/Cart";
 
 class SetupConnection {
   private _appDataSource: DataSource;

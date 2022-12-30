@@ -1,7 +1,7 @@
 import { ArgsType, Field, Int } from "type-graphql";
 
 @ArgsType()
-export class CreateNewProductArgs {
+export class AddProductToCartArgs {
   @Field()
   pic: string;
   @Field()

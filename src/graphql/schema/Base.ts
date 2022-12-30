@@ -1,15 +1,13 @@
 import {
-  Column,
   CreateDateColumn,
   Entity,
-  OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
-import { User } from "./User";
 
+import { BaseEntity } from "typeorm";
 @Entity()
-export class Profile {
+export class Base extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -18,13 +16,4 @@ export class Profile {
 
   @UpdateDateColumn()
   updatedAt: Date;
-
-  @Column()
-  profilePic: string;
-
-  @Column()
-  aboutMe: string;
-
-  @OneToOne(() => User, (user) => user.profile)
-  user: User;
 }

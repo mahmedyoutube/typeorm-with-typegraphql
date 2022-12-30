@@ -1,33 +1,38 @@
 import {
-  Arg,
   Args,
-  FieldResolver,
+  Authorized,
+  Ctx,
   Mutation,
   Query,
   Resolver,
-  Root,
 } from "type-graphql";
-import { UserSchema as User } from "../../schema/UserSchema";
 import { CreateNewProductArgs } from "./types";
-import { ProductSchema } from "../../schema/ProductSchema";
+import { Product } from "../../schema/Product";
+import { User } from "../../schema/User";
+import { IGraphQLCotext } from "../../../global/types";
 
 @Resolver(() => User)
 export class ProductResolver {
-  @FieldResolver(() => User, { nullable: true })
-  async user(@Root() product: ProductSchema) {
-    return;
+  @Query(() => [Product], { nullable: true })
+  async products(): Promise<Product[] | null> {
+    return await Product.find({
+      relations: {
+        user: { profile: { user: true }, products: true, },
+        cart: true,
+      },
+    });
   }
 
-  @Query(() => [User], { nullable: true })
-  async users(): Promise<User[] | null> {
-    return [];
-  }
-
-  @Mutation(() => ProductSchema, { nullable: true })
+  @Authorized()
+  @Mutation(() => Product, { nullable: true })
   async createProduct(
     @Args()
-    { name, description }: CreateNewProductArgs
+    { pic, description, price }: CreateNewProductArgs,
+    @Ctx() { currentUser }: IGraphQLCotext
   ) {
-    console.log("create new Product  ", name, description);
+    const user = await User.findOneBy({ id: currentUser!.id });
+    const product = Product.create({ pic, description, price, user: user! });
+    await product.save();
+    return product;
   }
 }

@@ -1,35 +1,39 @@
 import {
+  BaseEntity,
   Column,
   CreateDateColumn,
   Entity,
-  JoinColumn,
-  ManyToOne,
+  OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
 import { User } from "./User";
+import { Field, ObjectType } from "type-graphql";
 
 @Entity()
-export class Product {
+@ObjectType()
+export class Profile extends BaseEntity {
   @PrimaryGeneratedColumn()
+  @Field()
   id: number;
 
   @CreateDateColumn()
+  @Field()
   createdAt: Date;
 
   @UpdateDateColumn()
+  @Field()
   updatedAt: Date;
 
   @Column()
-  productPic: string;
+  @Field()
+  profilePic: string;
 
   @Column()
-  productDescription: string;
+  @Field()
+  aboutMe: string;
 
-  @Column({ type: "numeric" })
-  price: number;
-
-  @ManyToOne(() => User, (user) => user.products)
-  @JoinColumn({ name: "user_id" })
+  @OneToOne(() => User, (user) => user.profile)
+  @Field(() => User)
   user: User;
 }
